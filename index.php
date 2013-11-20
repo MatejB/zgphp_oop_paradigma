@@ -24,21 +24,21 @@ $rezultat
 
 */
 
-$brojA = new Number();
-$brojA->id = 1;
-$brojA->number = 2648779;
-$brojA->active = false;
-
-$brojB = new Number();
-$brojB->id = 2;
-$brojB->number = 48977977;
-
-$sms = new SmsOperation($brojA, $brojB);
-$sms->acceptValidator(new NumberMustBeActive());
-if ($sms->validOperation())
-{
-	$sms->execute();
-}
+//$brojA = new Number();
+//$brojA->id = 1;
+//$brojA->number = 2648779;
+//$brojA->active = false;
+//
+//$brojB = new Number();
+//$brojB->id = 2;
+//$brojB->number = 48977977;
+//
+//$sms = new SmsOperation($brojA, $brojB);
+//$sms->acceptValidator(new NumberMustBeActive());
+//if ($sms->validOperation())
+//{
+//	$sms->execute();
+//}
 
 /* -------------------------- */
 
@@ -73,7 +73,13 @@ $numbers[] = new Number(array(
 		'id' => 2,
 		'number' => 54877796,
 		'contract' => new Contract(array(
-			'expirationDate' => '01.01.2013.'
+			'expirationDate' => '12.01.2013.'
+	   	)),
+		'connected_number' => new Number(array(
+			'id' => 101,
+			'contract' => new Contract(array(
+				'expirationDate' => '12.12.2013.'
+			))
 		))
 	));
 $numbers[] = new Number(array(

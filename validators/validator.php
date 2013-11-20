@@ -72,22 +72,29 @@ abstract class Validator
 
 	protected function _validateProperties($element)
 	{
+		$propertyValidation = null;
+
 		$properties = get_object_vars($element);
 		foreach ($properties as $name => $value)
 		{
 			if (is_object($value))
 			{
-				$resultOfPropertyValidation = $this->validate($value);
+				$resultOfPropertyValidation = $this->runValidation($value);
 				if (null === $resultOfPropertyValidation)
 				{
 					continue;
 				}
 
-				return $resultOfPropertyValidation;
+				if (false === $resultOfPropertyValidation)
+				{
+					return false;
+				}
+
+				$propertyValidation = true;
 			}
 		}
 
-		return null;
+		return $propertyValidation;
 	}
 
 	public function __toString()
