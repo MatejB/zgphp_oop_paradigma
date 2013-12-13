@@ -24,21 +24,21 @@ $rezultat
 
 */
 
-//$brojA = new Number();
-//$brojA->id = 1;
-//$brojA->number = 2648779;
-//$brojA->active = false;
-//
-//$brojB = new Number();
-//$brojB->id = 2;
-//$brojB->number = 48977977;
-//
-//$sms = new SmsOperation($brojA, $brojB);
-//$sms->acceptValidator(new NumberMustBeActive());
-//if ($sms->validOperation())
-//{
-//	$sms->execute();
-//}
+$brojA = new Number();
+$brojA->id = 1;
+$brojA->number = 2648779;
+$brojA->active = false;
+
+$brojB = new Number();
+$brojB->id = 2;
+$brojB->number = 48977977;
+
+$sms = new SmsOperation($brojA, $brojB);
+$sms->acceptValidator(new NumberMustBeActive());
+if ($sms->validOperation())
+{
+	$sms->execute();
+}
 
 /* -------------------------- */
 
