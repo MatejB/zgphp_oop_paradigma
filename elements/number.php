@@ -1,6 +1,6 @@
 <?php
 
-class Number
+class Number extends Element
 {
 	public $id = null;
 	public $number = null;

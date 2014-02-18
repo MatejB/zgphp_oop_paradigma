@@ -1,6 +1,6 @@
 <?php
 
-class Tariff
+class Tariff extends Element
 {
 	public $id = null;
 

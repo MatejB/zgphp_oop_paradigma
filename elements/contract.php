@@ -1,6 +1,6 @@
 <?php
 
-class Contract
+class Contract extends Element
 {
 	public $expirationDate = null;
 
