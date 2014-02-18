@@ -4,9 +4,9 @@ date_default_timezone_set('Europe/Zagreb');
 
 set_include_path(
 	get_include_path()
-	. PATH_SEPARATOR . 'elements/'
-	. PATH_SEPARATOR . 'operations/'
-	. PATH_SEPARATOR . 'validators/'
+	. PATH_SEPARATOR . 'elements'
+	. PATH_SEPARATOR . 'operations'
+	. PATH_SEPARATOR . 'validators'
 );
 spl_autoload_register();
 
@@ -24,21 +24,21 @@ $rezultat
 
 */
 
-//$brojA = new Number();
-//$brojA->id = 1;
-//$brojA->number = 2648779;
-//$brojA->active = false;
-//
-//$brojB = new Number();
-//$brojB->id = 2;
-//$brojB->number = 48977977;
-//
-//$sms = new SmsOperation($brojA, $brojB);
-//$sms->acceptValidator(new NumberMustBeActive());
-//if ($sms->validOperation())
-//{
-//	$sms->execute();
-//}
+$brojA = new Number();
+$brojA->id = 1;
+$brojA->number = 2648779;
+$brojA->active = false;
+
+$brojB = new Number();
+$brojB->id = 2;
+$brojB->number = 48977977;
+
+$sms = new SmsOperation($brojA, $brojB);
+$sms->acceptValidator(new NumberMustBeActive());
+if ($sms->validOperation())
+{
+	$sms->execute();
+}
 
 /* -------------------------- */
 
@@ -60,20 +60,19 @@ $rezultat
 
 */
 
-
 $numbers = array();
 $numbers[] = new Number(array(
 		'id' => 1,
 		'number' => 56498797,
 		'contract' => new Contract(array(
-			'expirationDate' => '12.12.2013.'
+			'expirationDate' => '12.12.2014.'
 		))
 	));
 $numbers[] = new Number(array(
 		'id' => 2,
 		'number' => 54877796,
 		'contract' => new Contract(array(
-			'expirationDate' => '12.01.2013.'
+			'expirationDate' => '12.01.2015.'
 	   	)),
 		'connected_number' => new Number(array(
 			'id' => 101,
@@ -92,14 +91,14 @@ $tariff = new Tariff('TARIFF-A-XA');
 
 $tariffChangeOperation = new TariffChangeOperation($tariff, $numbers);
 
-//$numberMustBeActive = new NumberMustBeActive();
-//$numberMustBeActive->acceptValidator(new ContractMustNotBeActive());
-//$tariffChangeOperation->acceptValidator($numberMustBeActive);
+$numberMustBeActive = new NumberMustBeActive();
+$numberMustBeActive->acceptValidator(new ContractMustNotBeActive());
+$tariffChangeOperation->acceptValidator($numberMustBeActive);
 
-$dynamicValidator = new DynamicValidator();
-$dynamicValidator->acceptValidator(new NumberMustBeActive());
-$dynamicValidator->acceptValidator(new ContractMustNotBeActive());
-$tariffChangeOperation->acceptValidator($dynamicValidator);
+//$dynamicValidator = new DynamicValidator();
+//$dynamicValidator->acceptValidator(new NumberMustBeActive());
+//$dynamicValidator->acceptValidator(new ContractMustNotBeActive());
+//$tariffChangeOperation->acceptValidator($dynamicValidator);
 
 if ($tariffChangeOperation->validOperation())
 {
